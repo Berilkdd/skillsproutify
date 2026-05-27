@@ -20,7 +20,7 @@ from core.views import my_core
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('core/', my_core, include('core.urls')),
+    path('core/', include('core.urls')),
 ]
 
 
