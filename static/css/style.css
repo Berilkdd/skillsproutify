@@ -12,13 +12,28 @@ body {
     margin: 0;
 }
 
+.auth-label {
+    align-self: flex-start !important;
+    margin-left: 2rem;
+    color: var(--pink-primary);
+    margin-bottom: 8px;
+    display: flex;
+}
+
 .auth-content {
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+.auth-box {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .slogan-text {
@@ -39,18 +54,14 @@ body {
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     transition: all 0.2s ease;
+    display: inline-block;
+    text-decoration: none;
 }
 
 .primary-btn:hover {
     background-color: var(--pink-primary);
     color: var(--white);
     opacity: 0.9;
-}
-
-.auth-label {
-    color: var(--pink-primary);
-    margin-bottom: 8px;
-    display: block;
 }
 
 .primary-description {
@@ -60,5 +71,18 @@ body {
     margin: 0 auto;
 }
 
+.primary-input {
+    width: 90%;
+    max-width: 22rem;
 
+    padding: 0.5rem 1rem;
 
+    border: none;
+    border-radius: 2rem;
+
+    background-color: var(--white);
+}
+
+.primary-input::placeholder {
+    color: transparent;
+}
