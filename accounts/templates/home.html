@@ -1,0 +1,54 @@
+{% extends "auth_base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div>
+
+    <header class="text-center">
+        <h1 class="logo">
+            skillsproutify
+        </h1>
+    </header>
+
+    <div>
+        <p class="slogan-text">where learning blooms..</p>
+    </div>
+
+    <div style="margin-top: 6rem;">
+
+        <p class="primary-description">
+            Explore different roles,<br>
+            set your learning goals,<br>
+            and watch your progress bloom.<br>
+            All your books, courses, and tools<br>
+            in one place.
+        </p>
+
+    </div>
+
+    <div style="margin-top: 2rem;">
+
+       <a href="/accounts/signup/" class="primary-btn">
+            join
+        </a>
+
+    </div>
+
+    <div style="margin-top: 6rem;">
+
+        <p class="primary-description">Here to keep blooming?</p>
+    
+    </div>
+
+    <div style="margin-top: 2rem;">
+
+        <a href="/accounts/login/" class="primary-btn">
+            log-in
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}
