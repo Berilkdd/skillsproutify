@@ -1,0 +1,73 @@
+{% extends "auth_base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block content %}
+
+<div class="auth-box">
+
+    <header class="text-center">
+        <h1 class="logo">
+            skillsproutify
+        </h1>
+    </header>
+
+    <div>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="mb-2">
+
+                <label for="id_username" class="auth-label">
+                    user name
+                </label>
+
+                {{ form.username|add_class:"primary-input"|attr:"placeholder:" }}
+ 
+            </div>
+
+            <div class="mb-2">
+
+                <label for="id_email" class="auth-label">
+                    e-mail
+                </label>
+
+                {{ form.email|add_class:"primary-input"|attr:"placeholder:" }}
+
+
+            </div>
+
+            <div class="mb-2">
+
+                <label for="id_password1" class="auth-label">
+                    password
+                </label>
+
+                {{ form.password1|add_class:"primary-input"|attr:"placeholder:" }}
+
+
+            </div>
+
+            <div class="mb-5">
+
+                <label for="id_password2" class="auth-label">
+                    retype password
+                </label>
+
+                {{ form.password2|add_class:"primary-input"|attr:"placeholder:" }}
+
+            </div>
+
+            <button type="submit" class="primary-btn">
+                join
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
