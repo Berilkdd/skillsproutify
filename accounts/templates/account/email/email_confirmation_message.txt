@@ -1,6 +1,8 @@
+{# Email template customized with guidance from ChatGPT #}
+
 Hi there!
 
-Welcome to Skillsproutify 🌱
+Welcome to Skillsproutify 
 
 Please verify your email address by clicking the link below:
 
