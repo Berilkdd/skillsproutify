@@ -1,0 +1,13 @@
+Hi there!
+
+Welcome to Skillsproutify 🌱
+
+Please verify your email address by clicking the link below:
+
+{{ activate_url }}
+
+Once verified, you'll be ready to start your learning journey.
+
+See you soon,
+
+The Skillsproutify Team
