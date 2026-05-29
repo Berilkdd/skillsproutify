@@ -151,6 +151,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "skillsproutify@gmail.com"
 EMAIL_HOST_PASSWORD = "njju phye ehrr dgsb"
 DEFAULT_FROM_EMAIL = "Skillsproutify <skillsproutify@gmail.com>"
+ACCOUNT_EMAIL_SUBJECT_PREFIX = ''
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 
