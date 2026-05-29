@@ -86,3 +86,15 @@ body {
 .primary-input::placeholder {
     color: transparent;
 }
+
+.form-error {
+    max-width: 16rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.1rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0.75rem;
+    color: var(--green-text);
+    text-align: left;
+    line-height: 1.1;
+}
