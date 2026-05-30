@@ -46,6 +46,49 @@ body {
     font-size: 3.5rem;
 }
 
+.navbar-logo {
+    font-family: "jeff-script", sans-serif;
+    color: var(--pink-secondary);
+    font-size: 2rem !important; /* boşluk yok, rem doğru yazım */
+    margin: 0;
+}
+
+.navbar-toggler {
+    color: var(--pink-secondary);
+    border: none;
+    font-size: 1.8rem;
+}
+
+navbar-toggler:hover {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    color: var(--pink-primary);
+}
+
+.navbar-toggler:focus {
+    border: none;
+    box-shadow: none;
+    color: var(--pink-primary);
+}
+
+.navbar-collapse {
+    position: absolute;
+    top: 100%;
+    right: 0;   
+}
+
+.navbar-nav {
+    display: flex;
+    margin-right: 2rem;
+    flex-direction: column; /* menü açıldığında dikey sıralı */
+    align-items: flex-end;  /* sağa yasla */     
+}
+
+.nav-link {
+    color: var(--pink-secondary);
+}
+
 .primary-btn {
     background-color: var(--pink-secondary);
     color: var(--white);
