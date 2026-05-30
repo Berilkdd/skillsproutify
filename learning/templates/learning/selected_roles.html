@@ -1,0 +1,34 @@
+{% extends "learning_base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class="inner-box">
+    <div>
+        <p class="primary-description mb-4">
+            Selected roles
+        </p>
+        <div class="role-list">
+            {% for role in roles %}
+                <input
+                    type="text"
+                    class="primary-input mb-3"
+                    value="{{ role.title }}"
+                    readonly
+                >
+            {% endfor %}
+        </div>
+    </div>
+    <p class="primary-description">
+        discover a new role
+    </p>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.title|add_class:"primary-input"|attr:"placeholder:Job title" }}
+        <button type="submit" class="primary-btn mt-4">
+            Add
+        </button>
+    </form>        
+</div>
+
+{% endblock %}
