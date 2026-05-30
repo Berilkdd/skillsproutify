@@ -12,33 +12,31 @@ body {
     margin: 0;
 }
 
-.auth-label {
-    align-self: flex-start !important;
-    margin-left: 2rem;
-    color: var(--pink-primary);
-    margin-bottom: 8px;
-    display: flex;
+/* Page Layout */
+
+.navbar-box {
+    height: 7vh;
+    margin: 0;
 }
 
-.auth-content {
+.outer-box {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     text-align: center;
 }
 
-.auth-box {
+.inner-box {
     height: 60vh;
+    width: 34vh;
+    margin-top: 12vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.slogan-text {
-    color: var(--green-text);
-}
+/* Logo */
 
 .logo {
     font-family: "jeff-script", sans-serif;
@@ -46,10 +44,12 @@ body {
     font-size: 3.5rem;
 }
 
+/* Navbar */
+
 .navbar-logo {
     font-family: "jeff-script", sans-serif;
     color: var(--pink-secondary);
-    font-size: 2rem !important; /* boşluk yok, rem doğru yazım */
+    font-size: 2rem !important; 
     margin: 0;
 }
 
@@ -81,13 +81,15 @@ navbar-toggler:hover {
 .navbar-nav {
     display: flex;
     margin-right: 2rem;
-    flex-direction: column; /* menü açıldığında dikey sıralı */
-    align-items: flex-end;  /* sağa yasla */     
+    flex-direction: column; 
+    align-items: flex-end;      
 }
 
 .nav-link {
     color: var(--pink-secondary);
 }
+
+/* Button */
 
 .primary-btn {
     background-color: var(--pink-secondary);
@@ -107,6 +109,8 @@ navbar-toggler:hover {
     opacity: 0.9;
 }
 
+/* Text */
+
 .primary-description {
     color: var(--pink-primary);
     line-height: 1.5;
@@ -114,15 +118,18 @@ navbar-toggler:hover {
     margin: 0 auto;
 }
 
+.slogan-text {
+    color: var(--green-text);
+}
+
+/*Inputs*/
+
 .primary-input {
     width: 90%;
     max-width: 22rem;
-
     padding: 0.5rem 1rem;
-
     border: none;
     border-radius: 2rem;
-
     background-color: var(--white);
 }
 
@@ -130,10 +137,27 @@ navbar-toggler:hover {
     color: transparent;
 }
 
+.role-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+/*Error Messages*/
+
 .form-error {
     margin-top: 0.2rem;
     font-size: 0.3rem;
     color: var(--green-text);
     text-align: center;
     line-height: 1.1;
+}
+
+.auth-label {
+    align-self: flex-start !important;
+    margin-left: 2rem;
+    color: var(--pink-primary);
+    margin-bottom: 8px;
+    display: flex;
 }

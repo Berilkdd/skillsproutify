@@ -46,6 +46,13 @@ body {
     font-size: 3.5rem;
 }
 
+.navbar-logo {
+    font-family: "jeff-script", sans-serif;
+    color: var(--pink-secondary);
+    font-size: 2rem;
+    margin: 0;
+}
+
 .primary-btn {
     background-color: var(--pink-secondary);
     color: var(--white);
