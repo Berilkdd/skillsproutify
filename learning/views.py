@@ -35,7 +35,7 @@ def selected_roles(request):
             return redirect('selected_roles')   
     return render(
         request, 
-        "learning/roles.html", 
+        "learning/selected_roles.html", 
         {"roles": roles, "form": form}
     )
 
