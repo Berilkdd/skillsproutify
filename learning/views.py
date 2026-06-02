@@ -6,6 +6,9 @@ def first_role(request):
     return render(request, "learning/first_role.html")
 
 def welcome(request):
+    print(request.user)
+    print(request.user.is_authenticated)
+
     roles = JobRole.objects.filter(user=request.user)
     form = JobRoleForm()
     
@@ -35,7 +38,7 @@ def selected_roles(request):
             return redirect('selected_roles')   
     return render(
         request, 
-        "learning/selected_roles.html", 
+        "learning/roles.html", 
         {"roles": roles, "form": form}
     )
 
