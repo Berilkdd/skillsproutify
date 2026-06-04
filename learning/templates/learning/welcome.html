@@ -12,18 +12,30 @@
             Hi {{ user.username }}! 
         </h3>
 
-        <p class="primary-description mt-3">
-            Your email has been verified successfully.
-        </p>
+        {% if is_from_email %}
 
-        <p class="primary-description mt-5">
-            Let's start your learning journey!
-        </p>
+            <p class="primary-description mt-3">
+                Your email has been verified successfully.
+            </p>
 
-        <p class="primary-description">
-            To get going, create your first job role.
-            You can always add more roles later, but let's kick things off with one.
-        </p>
+            <p class="primary-description mt-5">
+                Let's start your learning journey!
+            </p>
+
+            <p class="primary-description">
+                To get going, create your first job role.
+                You can always add more roles later, but let's kick things off with one.
+            </p>
+
+        {% else %}
+            <p class="primary-description mt-3">
+                Ready for a new skill challenge? 
+            </p>
+
+            <p class="primary-description mt-5">
+                Tell us what role you want to focus on next!
+            </p>
+        {% endif %}
 
         <div>
             <p class="primary-description mb-3">
