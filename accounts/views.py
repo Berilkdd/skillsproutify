@@ -12,3 +12,4 @@ def login_redirect(request):
             return redirect('selected_roles')
         # If they haven't got any role yet
     return redirect('welcome')
+

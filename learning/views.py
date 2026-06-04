@@ -52,7 +52,6 @@ def selected_roles(request):
         {"roles": roles, "form": form}
     )
 
-
 @login_required
 def delete_job_role(request, role_id):
    
