@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import JobRole
 from .forms import JobRoleForm
@@ -46,4 +46,16 @@ def selected_roles(request):
     )
 
 
+@login_required
+def delete_job_role(request, role_id):
+    """
+    Kullanıcının seçtiği rolü güvenli bir şekilde siler.
+    """
+    # Sadece giriş yapmış kullanıcının kendi rolünü bul (Güvenlik zırhı)
+    job_role = get_object_or_404(JobRole, id=role_id, user=request.user)
     
+    if request.method == "POST":
+        job_role.delete()
+        
+    # Rol silindikten sonra durum kontrolü için yönlendiriyoruz
+    return redirect('/login-redirect/')
