@@ -240,3 +240,58 @@ navbar-toggler:hover {
     margin-bottom: 8px;
     display: flex;
 }
+
+/*Confirmation Box*/
+
+/* 1. KATMAN: Ekranı kaplayan koyu arka plan (Varsayılan olarak gizli) */
+.custom-modal-overlay {
+    display: none; /* Gizle */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Yarı şeffaf siyah */
+    z-index: 9999; /* En üstte görünmesi için */
+}
+
+/* SİHİRLİ DOKUNUŞ: Çöp kutusuna tıklanınca modalı görünür yap ve ortala */
+.custom-modal-overlay:target {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2. KATMAN: Ortadaki beyaz onay kutusu */
+.custom-modal-box {
+    background-color: #d8ead0;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    max-width: 400px;
+    width: 75%;
+    text-align: center;
+}
+
+/* Modal içindeki yazı alanı */
+.modal-text {
+    margin-bottom: 2rem;
+}
+
+/* Butonları yan yana getiren grup */
+.modal-btn-group {
+    display: flex !important;
+    gap: 1.5rem !important;
+    justify-content: center !important;
+}
+
+.modal-form {
+    display: inline;
+}
+
+/* İptal butonuna özel sıfırlamalar */
+.cancel-btn {
+    text-decoration: none;
+    text-align: center;
+    line-height: normal;
+}
