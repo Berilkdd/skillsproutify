@@ -181,7 +181,7 @@ navbar-toggler:hover {
     display: block !important;
 }
 
-/*Error Messages*/
+/*Auth form texts*/
 
 .form-error {
     margin-top: 0.2rem;
@@ -195,6 +195,14 @@ navbar-toggler:hover {
     align-self: flex-start !important;
     margin-left: 2rem;
     color: var(--pink-primary);
+    margin-bottom: 8px;
+    display: flex;
+}
+
+.forgot-password {
+    align-self: flex-start !important;
+    margin-left: 2rem;
+    color: var(--green-text);
     margin-bottom: 8px;
     display: flex;
 }

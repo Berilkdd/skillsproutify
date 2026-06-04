@@ -39,6 +39,13 @@
                 </label>
 
                 {{ form.password|add_class:"primary-input"|attr:"placeholder:" }}
+
+                <div class="forgot-password-container">
+                    <a href="{% url 'account_reset_password' %}" class="forgot-password">
+                        forgot password?
+                    </a>
+                </div>
+
                 {% for error in form.password.errors %}
                     <p class="form-error">{{ error }}</p>
                 {% endfor %}
