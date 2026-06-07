@@ -79,14 +79,19 @@ def role_resources(request, role_id):
     )
 
 @login_required
-def delete_job_role(request, role_id):
+def delete_item(request, item_type, item_id):
+    if item_type == 'role':
+        item = get_object_or_404(JobRole, id=item_id, user=request.user)
+        redirect_target = '/login-redirect/'  
+    elif item_type == 'resource':
+        item = get_object_or_404(Resource, id=item_id, job_role__user=request.user)        
+        redirect_target = f'/learning/roles/{item.job_role.id}/resources/'
    
-    job_role = get_object_or_404(JobRole, id=role_id, user=request.user)
-    
     if request.method == "POST":
-        job_role.delete()
+        item.delete()
         
-    return redirect('/login-redirect/')
+    return redirect(redirect_target)
+
 
 @receiver(email_confirmed)
 def set_email_verified_session(request, email_address, **kwargs):

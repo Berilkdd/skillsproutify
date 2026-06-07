@@ -37,7 +37,7 @@
                         <div class="modal-btn-group">
                             
                             <!-- Real delete button -->
-                            <form action="{% url 'delete_job_role' role.id %}" method="POST" class="modal-form">
+                            <form action="{% url 'delete_item' 'role' role.id %}" method="POST" class="modal-form">
                                 {% csrf_token %}
                                 <button type="submit" class="primary-btn">
                                     yes
