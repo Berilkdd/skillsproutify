@@ -51,6 +51,13 @@
                     </div>
                 </div>
             </div>
+        
+        {% empty %}
+            
+            <p class="primary-description mt-5">
+                no resources left. add a new one below!
+            </p>
+
         {% endfor %}
      </div>
 </div>
@@ -73,5 +80,6 @@
     </button>
     </form> 
 </div>
+
 
 {% endblock %}
