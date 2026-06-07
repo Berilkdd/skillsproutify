@@ -52,14 +52,17 @@ def selected_roles(request):
         {"roles": roles, "form": form}
     )
 
+# Google ai help to prevent default resources from regenerating when the user intentionally clears the entire list.
 @login_required
 def role_resources(request, role_id):
     job_role = get_object_or_404(JobRole, id=role_id, user=request.user)
+    session_key = f'role_{job_role.id}_initialized'
     
-    if not job_role.resource_set.exists():
+    if not job_role.resource_set.exists() and not request.session.get(session_key, False):
         Resource.objects.create(job_role=job_role, name='Tools')
         Resource.objects.create(job_role=job_role, name='Courses')
         Resource.objects.create(job_role=job_role, name='Books')
+        request.session[session_key] = True
         
     resources = job_role.resource_set.all()  
     form = ResourceForm()            
@@ -70,6 +73,7 @@ def role_resources(request, role_id):
         
         if form.is_valid():
             form.save() 
+            request.session[session_key] = True
             return redirect('role_resources', role_id=job_role.id)   
             
     return render(

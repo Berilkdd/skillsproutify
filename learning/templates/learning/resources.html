@@ -1,0 +1,77 @@
+{% extends "learning_base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class="inner-box-learning">
+    <div class="role-list mt-5">
+        <p class="primary-description mb-2">
+            {{ job_role.title }} resources
+        </p>
+        {% for resource in resources %}
+            <div class="role-item">
+                <input
+                    type="text"
+                    class="primary-input role-input mb-3"
+                    value="{{ resource.name }}"
+                    readonly
+                >
+
+                <!--Button for confirmation box -->
+
+                <a href="#delete-confirm-{{ resource.id }}">
+                    <i class="fa-solid fa-trash delete-btn"></i>
+                </a>
+
+                <!--Delete resource confirmation box-->
+
+                <div id="delete-confirm-{{ resource.id }}" class="custom-modal-overlay">
+                    <div class="custom-modal-box">
+                        
+                        <p class="primary-description modal-text">
+                            Are you sure you want to delete {{ resource.name }} resource?
+                        </p>
+
+                        <div class="modal-btn-group">
+                            
+                            <!-- Real delete button -->
+                            <form action="{% url 'delete_item' 'resource' resource.id %}" method="POST" class="modal-form">
+                                {% csrf_token %}
+                                <button type="submit" class="primary-btn">
+                                    yes
+                                </button>
+                            </form>
+
+                            <!-- Cancel button -->
+                            <a href="#" class="primary-btn modal-btn cancel-btn">
+                                cancel
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+     </div>
+</div>
+    
+<div class="inner-box-learning-input">
+    <p class="primary-description">
+        add a new resource
+    </p>
+    <form method="POST">
+        {% csrf_token %}             
+        {{ form.name|add_class:"primary-input"|attr:"placeholder:Resource name" }}
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p class="form-error">{{ error }}</p>
+            {% endfor %}
+        {% endif %}      
+     
+    <button type="submit" class="primary-btn mt-5">
+        Add
+    </button>
+    </form> 
+</div>
+
+{% endblock %}
