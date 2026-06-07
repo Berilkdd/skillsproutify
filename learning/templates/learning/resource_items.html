@@ -1,0 +1,95 @@
+{% extends "learning_base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class="inner-box-learning">
+    <div class="mt-2">
+        <p class="primary-description mb-2">
+            {{ resource.job_role.title }} Role
+        </p>
+
+        <div class="item-row">
+            <span class="primary-description item-text table-header">
+                {{ resource.name }}
+            </span>
+            <span class="primary-description status-field table-header">
+                Progress
+            </span>
+        </div>
+        
+        {% for item in items %}
+            <div class="item-row">
+                <span class="primary-description item-text">
+                    {{ item.name }}
+                </span>
+        
+                <span class="primary-description status-field">
+                    {{ item.status }}
+                </span>
+
+                <!--Button for confirmation box -->
+
+                <a href="#delete-confirm-{{ item.id }}">
+                    <i class="fa-solid fa-trash delete-btn"></i>
+                </a>
+
+                <!--Delete item confirmation box-->
+
+                <div id="delete-confirm-{{ item.id }}" class="custom-modal-overlay">
+                    <div class="custom-modal-box">
+                        
+                        <p class="primary-description modal-text">
+                            Are you sure you want to delete {{ item.name }}?
+                        </p>
+
+                        <div class="modal-btn-group">
+                            
+                            <!-- Real delete button -->
+                            <form action="{% url 'delete_item' 'resource_item' item.id %}" method="POST" class="modal-form">
+                                {% csrf_token %}
+                                <button type="submit" class="primary-btn">
+                                    yes
+                                </button>
+                            </form>
+
+                            <!-- Cancel button -->
+                            <a href="#" class="primary-btn modal-btn cancel-btn">
+                                cancel
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        
+        {% empty %}
+            
+            <p class="primary-description text-center mt-5" style="opacity: 0.5;">
+                no items left. add a new one below!
+            </p>
+
+        {% endfor %}
+     </div>
+</div>
+    
+<div class="inner-box-learning-input">
+    <p class="primary-description">
+        add a new item
+    </p>
+    <form method="POST">
+        {% csrf_token %}             
+        {{ form.name|add_class:"primary-input"|attr:"placeholder:Item name" }}
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p class="form-error">{{ error }}</p>
+            {% endfor %}
+        {% endif %}      
+     
+    <button type="submit" class="primary-btn mt-5">
+        Add
+    </button>
+    </form> 
+</div>
+
+{% endblock %}

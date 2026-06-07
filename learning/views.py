@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from allauth.account.signals import email_confirmed
 from django.dispatch import receiver
-from .models import JobRole, Resource
-from .forms import JobRoleForm, ResourceForm 
+from .models import JobRole, Resource, ResourceItem
+from .forms import JobRoleForm, ResourceForm, ResourceItemForm
 
 
 @login_required
@@ -80,6 +80,26 @@ def role_resources(request, role_id):
         request, 
         "learning/resources.html", 
         {"job_role": job_role, "resources": resources, "form": form}
+    )
+
+@login_required
+def resource_items(request, resource_id):
+    resource = get_object_or_404(Resource, id=resource_id, job_role__user=request.user)
+    items = resource.resourceitem_set.all()  
+    form = ResourceItemForm()            
+
+    if request.method == "POST":
+        new_item = ResourceItem(resource=resource)
+        form = ResourceItemForm(request.POST, instance=new_item)
+        
+        if form.is_valid():
+            form.save() 
+            return redirect('resource_items', resource_id=resource.id)   
+            
+    return render(
+        request, 
+        "learning/resource_items.html", 
+        {"resource": resource, "items": items, "form": form}
     )
 
 @login_required

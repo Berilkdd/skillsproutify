@@ -10,12 +10,14 @@
         </p>
         {% for resource in resources %}
             <div class="role-item">
-                <input
-                    type="text"
-                    class="primary-input role-input mb-3"
-                    value="{{ resource.name }}"
-                    readonly
-                >
+                <a href="{% url 'resource_items' resource.id %}" style="text-decoration: none; display: block; width: 100%;">
+                    <input
+                        type="text"
+                        class="primary-input role-input mb-3"
+                        value="{{ resource.name }}"
+                        readonly
+                    >
+                </a>
 
                 <!--Button for confirmation box -->
 
