@@ -13,3 +13,15 @@ class JobRole(models.Model):
         #Check the quantity before save
         if self.user.jobrole_set.count() >= 5 and not self.pk:
             raise ValidationError("You can only have up to 5 roles.")
+        
+class Resource(models.Model):
+    job_role = models.ForeignKey(JobRole, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+    def clean(self):
+        #Check the quantity before save
+        if self.job_role.resource_set.count() >= 5 and not self.pk:
+            raise ValidationError("You can only have up to 5 resources.")

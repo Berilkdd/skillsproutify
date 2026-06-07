@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from allauth.account.signals import email_confirmed
 from django.dispatch import receiver
-from .models import JobRole
-from .forms import JobRoleForm
+from .models import JobRole, Resource
+from .forms import JobRoleForm, ResourceForm 
 
 
 @login_required
@@ -53,6 +53,32 @@ def selected_roles(request):
     )
 
 @login_required
+def role_resources(request, role_id):
+    job_role = get_object_or_404(JobRole, id=role_id, user=request.user)
+    
+    if not job_role.resource_set.exists():
+        Resource.objects.create(job_role=job_role, name='Tools')
+        Resource.objects.create(job_role=job_role, name='Courses')
+        Resource.objects.create(job_role=job_role, name='Books')
+        
+    resources = job_role.resource_set.all()  
+    form = ResourceForm()            
+
+    if request.method == "POST":
+        new_resource = Resource(job_role=job_role)
+        form = ResourceForm(request.POST, instance=new_resource)
+        
+        if form.is_valid():
+            form.save() 
+            return redirect('role_resources', role_id=job_role.id)   
+            
+    return render(
+        request, 
+        "learning/resources.html", 
+        {"job_role": job_role, "resources": resources, "form": form}
+    )
+
+@login_required
 def delete_job_role(request, role_id):
    
     job_role = get_object_or_404(JobRole, id=role_id, user=request.user)
@@ -65,3 +91,4 @@ def delete_job_role(request, role_id):
 @receiver(email_confirmed)
 def set_email_verified_session(request, email_address, **kwargs):
         request.session['is_from_email'] = True
+
