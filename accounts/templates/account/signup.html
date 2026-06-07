@@ -2,84 +2,71 @@
 {% load widget_tweaks %}
 {% load static %}
 
-{% block content %}
+{% block content %} 
+<form method="POST">
 
-<div class="inner-box">
+    <div class="inner-box">
+        {% csrf_token %}
+        {# Form validation error rendering added with guidance from ChatGPT #}
 
-    <header class="text-center">
-        <h1 class="logo">
-            skillsproutify
-        </h1>
-    </header>
+        <div class="mt-3 mb-3">
 
-    <div>
+            <label for="id_username" class="auth-label">
+                user name
+            </label>
 
-        <form method="POST">
+            {{ form.username|add_class:"primary-input"|attr:"placeholder:" }}
+            {% for error in form.username.errors %}
+                <p class="form-error">{{ error|cut:". This value may contain only letters, numbers, and @/./+/-/_ characters." }}</p>
+            {% endfor %}
 
-            {% csrf_token %}
+        </div>
 
-            {# Form validation error rendering added with guidance from ChatGPT #}
+        <div class="mb-3">
 
-            <div class="mb-2">
+            <label for="id_email" class="auth-label">
+                e-mail
+            </label>
 
-                <label for="id_username" class="auth-label">
-                    user name
-                </label>
+            {{ form.email|add_class:"primary-input"|attr:"placeholder:" }}
+            {% for error in form.email.errors %}
+                <p class="form-error">{{ error }}</p>
+            {% endfor %}
 
-                {{ form.username|add_class:"primary-input"|attr:"placeholder:" }}
-                {% for error in form.username.errors %}
-                    <p class="form-error">{{ error }}</p>
-                {% endfor %}
- 
-            </div>
+        </div>
 
-            <div class="mb-2">
+        <div class="mb-3">
 
-                <label for="id_email" class="auth-label">
-                    e-mail
-                </label>
+            <label for="id_password1" class="auth-label">
+                password
+            </label>
 
-                {{ form.email|add_class:"primary-input"|attr:"placeholder:" }}
-                {% for error in form.email.errors %}
-                    <p class="form-error">{{ error }}</p>
-                {% endfor %}
+            {{ form.password1|add_class:"primary-input"|attr:"placeholder:" }}
+            {% for error in form.password1.errors %}
+                <p class="form-error">{{ error|cut:"This password is too short." }}</p>
+            {% endfor %}
 
-            </div>
+        </div>
 
-            <div class="mb-2">
+        <div class="mb-3">
 
-                <label for="id_password1" class="auth-label">
-                    password
-                </label>
+            <label for="id_password2" class="auth-label">
+                retype password
+            </label>
 
-                {{ form.password1|add_class:"primary-input"|attr:"placeholder:" }}
-                {% for error in form.password1.errors %}
-                    <p class="form-error">{{ error }}</p>
-                {% endfor %}
+            {{ form.password2|add_class:"primary-input"|attr:"placeholder:" }}
+            {% for error in form.password2.errors %}
+                <p class="form-error">{{ error }}</p>
+            {% endfor %}
 
-            </div>
-
-            <div class="mb-5">
-
-                <label for="id_password2" class="auth-label">
-                    retype password
-                </label>
-
-                {{ form.password2|add_class:"primary-input"|attr:"placeholder:" }}
-                {% for error in form.password2.errors %}
-                    <p class="form-error">{{ error }}</p>
-                {% endfor %}
-
-            </div>
-
-            <button type="submit" class="primary-btn">
-                join
-            </button>
-
-        </form>
-
+        </div>
     </div>
 
-</div>
+    <div class="button-footer">
+        <button type="submit" class="primary-btn">
+            join
+        </button>
+    </div>
 
+</form>    
 {% endblock %}

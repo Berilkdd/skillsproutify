@@ -4,52 +4,62 @@
 
 {% block content %}
 
-<div class="inner-box">
+<div class="inner-box-learning">
+    
+    <h3 class="primary-description mb-5" style="margin-top: 11rem;">
+        Hi {{ user.username }}! 
+    </h3>
 
-    <div>
+    {% if is_from_email %}
 
-        <h3 class="primary-description">
-            Hi {{ user.username }}! 
-        </h3>
+        <p class="primary-description mb-2">
+            Your email has been verified successfully.
+        </p>
 
-        {% if is_from_email %}
+        <p class="primary-description">
+            Let's start your learning journey!
+        </p>
 
-            <p class="primary-description mt-3">
-                Your email has been verified successfully.
-            </p>
+        <p class="primary-description">
+            To get going, create your first job role.
+            You can always add more roles later 
+        </p>        
 
-            <p class="primary-description mt-5">
-                Let's start your learning journey!
-            </p>
+    {% else %}
 
-            <p class="primary-description">
-                To get going, create your first job role.
-                You can always add more roles later, but let's kick things off with one.
-            </p>
+        <p class="primary-description mt-5 mb-2">
+            Ready for a new skill challenge? 
+        </p>
 
-        {% else %}
-            <p class="primary-description mt-3">
-                Ready for a new skill challenge? 
-            </p>
+        <p class="primary-description" mb-5>
+            Tell us what role you want to focus on next!
+        </p>       
 
-            <p class="primary-description mt-5">
-                Tell us what role you want to focus on next!
-            </p>
-        {% endif %}
+    {% endif %}
 
-        <div>
-            <p class="primary-description mb-3">
-                discover a new role
-            </p>
-            <form method="POST">
-                {% csrf_token %}
-                {{ form.title|add_class:"primary-input"|attr:"placeholder:Job title" }}
-                <button type="submit" class="primary-btn mt-4">
-                    Add
-                </button>
-            </form>  
-        </div>
-    </div>
+</div>
+
+<div class="inner-box-learning-input">
+
+    {% if is_from_email %}
+        <p class="primary-description">
+            let's kick things off with one.
+        </p> 
+    {% else %}   
+        <p class="primary-description">
+            discover a new role
+        </p>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.title|add_class:"primary-input"|attr:"placeholder:Job title" }}
+        <button type="submit" class="primary-btn mt-5">
+            Add
+        </button>
+    </form>  
+</div>
+    
 
 </div>
 

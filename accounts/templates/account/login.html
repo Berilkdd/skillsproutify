@@ -2,63 +2,42 @@
 {% load widget_tweaks %}
 {% load static %}
 
-{% block content %}
+{% block content %} 
+<form method="POST">
 
-<div class="inner-box">
+    <div class="inner-box-small mt-5">
+        {% csrf_token %}
+        {# Form validation error rendering added with guidance from ChatGPT #}
+        <div>
+            <label for="id_login" class="auth-label">
+                user name
+            </label>
+            {{ form.login|add_class:"primary-input"|attr:"placeholder:" }}
+            {% for error in form.login.errors %}
+                <p class="form-error">{{ error }}</p>
+            {% endfor %}        
 
-    <header class="text-center">
-        <h1 class="logo">
-            skillsproutify
-        </h1>
-    </header>
-
-    <div class="mt-5">
-
-        <form method="POST">
-
-            {% csrf_token %}
-            {# Form validation error rendering added with guidance from ChatGPT #}
-
-            <div class="mb-4">
-
-                <label for="id_login" class="auth-label">
-                    user name
-                </label>
-
-                {{ form.login|add_class:"primary-input"|attr:"placeholder:" }}
-                {% for error in form.login.errors %}
-                    <p class="form-error">{{ error }}</p>
-                {% endfor %}
-
-            </div>
-
-            <div style="margin-bottom: 8rem;">
-
-                <label for="id_password" class="auth-label">
-                    password
-                </label>
-
-                {{ form.password|add_class:"primary-input"|attr:"placeholder:" }}
-
-                <div class="forgot-password-container">
-                    <a href="{% url 'account_reset_password' %}" class="forgot-password">
-                        forgot password?
-                    </a>
-                </div>
-
-                {% for error in form.password.errors %}
-                    <p class="form-error">{{ error }}</p>
-                {% endfor %}
-            </div>
-
-            <button type="submit" class="primary-btn">
-                log-in
-            </button>
-
-        </form>
-
+            <label for="id_password" class="auth-label mt-3">
+                password
+            </label>
+            {{ form.password|add_class:"primary-input"|attr:"placeholder:" }} 
+            {% for error in form.password.errors %}
+                <p class="form-error">{{ error }}</p>
+            {% endfor %}
+            <a href="{% url 'account_reset_password' %}" class="forgot-password mt-3">
+                forgot password?
+            </a>   
+        </div>
+    </div>
+    
+    <div class="button-footer">
+        <button type="submit" class="primary-btn">
+            log-in
+        </button>
     </div>
 
-</div>
+</form>    
+
+
 
 {% endblock %}

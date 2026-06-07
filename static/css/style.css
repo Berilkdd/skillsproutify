@@ -14,6 +14,10 @@ body {
 
 /* Page Layout */
 
+form {
+    position: relative; 
+}
+
 .navbar-box {
     height: 7vh;
     margin: 0;
@@ -28,12 +32,47 @@ body {
 }
 
 .inner-box {
-    height: 60vh;
-    width: 34vh;
-    margin-top: 12vh;
+    width: 85vw;            
+    max-width: 18rem;  
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;  
+    height: 25rem;  
+}
+
+.inner-box-small {
+    width: 85vw;            
+    max-width: 18rem;      
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    height: 13.2rem;    
+}
+
+.inner-box-learning {
+    width: 85vw;            
+    max-width: 18rem;  
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;  
+    height: 26.95rem;  
+}
+
+.inner-box-learning-input {
+     width: 85vw;            
+    max-width: 18rem;  
+    height: 10rem;     
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;      
+}
+
+.button-footer {
+    width: 100%;
+    height: 36px; 
+    display: flex;
+    align-items: flex-start; 
+    justify-content: center;
 }
 
 /* Logo */
@@ -51,6 +90,7 @@ body {
     color: var(--pink-secondary);
     font-size: 2rem !important; 
     margin: 0;
+    margin-left: 1rem;
 }
 
 .navbar-toggler {
@@ -73,16 +113,15 @@ navbar-toggler:hover {
 }
 
 .navbar-collapse {
-    position: absolute;
-    top: 100%;
     right: 0;   
 }
 
 .navbar-nav {
     display: flex;
-    margin-right: 2rem;
+    margin-right: 1rem;
     flex-direction: column; 
-    align-items: flex-end;      
+    align-items: flex-end;
+    margin-top: 0.5rem;     
 }
 
 .nav-link {
@@ -101,6 +140,7 @@ navbar-toggler:hover {
     transition: all 0.2s ease;
     display: inline-block;
     text-decoration: none;
+    align-self: center;
 }
 
 .primary-btn:hover {
@@ -124,11 +164,20 @@ navbar-toggler:hover {
 
 /*Inputs*/
 
+.auth-label {
+    align-self: flex-start !important;
+    margin-left: 2rem;
+    color: var(--pink-primary);
+    margin-bottom: 5px;
+    display: flex;
+}
+
 .primary-input {
-    width: 90%;
+    width: 100%;
     max-width: 22rem;
     padding: 0.5rem 1rem;
     border: none;
+    border: 0.125rem solid transparent;
     border-radius: 2rem;
     color: var(--pink-secondary);
     background-color: var(--white);
@@ -155,7 +204,7 @@ navbar-toggler:hover {
 .role-list {
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 0.5rem;
 }
 
 .role-item {
@@ -226,43 +275,45 @@ navbar-toggler:hover {
 /*Error Messages*/
 
 .form-error {
-    margin-top: 0.2rem;
-    font-size: 0.3rem;
+    max-width: 16rem;
+    margin-left: 1rem;
+    margin-right: auto;
+    font-size: 0.76rem;
     color: var(--green-text);
-    text-align: center;
-    line-height: 1.1;
+    text-align: left;
+    line-height: 1.1;   
+    position: absolute;  
+    width: 100%;
+    left: 0.5rem;        
+    margin-top: 0.3rem;
 }
 
-.auth-label {
-    align-self: flex-start !important;
-    margin-left: 2rem;
-    color: var(--pink-primary);
-    margin-bottom: 8px;
-    display: flex;
-}
+a.forgot-password {
+    color: var(--green-text) !important; 
+    text-decoration: none;               
+    font-size: 0.85rem;                  
+    display: inline-block;   
+}        
 
-/*Confirmation Box*/
+/*Delete confirmation box*/
 
-/* 1. KATMAN: Ekranı kaplayan koyu arka plan (Varsayılan olarak gizli) */
 .custom-modal-overlay {
-    display: none; /* Gizle */
+    display: none; 
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Yarı şeffaf siyah */
-    z-index: 9999; /* En üstte görünmesi için */
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 9999; 
 }
 
-/* SİHİRLİ DOKUNUŞ: Çöp kutusuna tıklanınca modalı görünür yap ve ortala */
 .custom-modal-overlay:target {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* 2. KATMAN: Ortadaki beyaz onay kutusu */
 .custom-modal-box {
     background-color: #d8ead0;
     padding: 2.5rem;
@@ -273,12 +324,10 @@ navbar-toggler:hover {
     text-align: center;
 }
 
-/* Modal içindeki yazı alanı */
 .modal-text {
     margin-bottom: 2rem;
 }
 
-/* Butonları yan yana getiren grup */
 .modal-btn-group {
     display: flex !important;
     gap: 1.5rem !important;
@@ -289,7 +338,6 @@ navbar-toggler:hover {
     display: inline;
 }
 
-/* İptal butonuna özel sıfırlamalar */
 .cancel-btn {
     text-decoration: none;
     text-align: center;

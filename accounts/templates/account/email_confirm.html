@@ -3,33 +3,25 @@
 
 {% block content %}
 
-<div class="inner-box">
+<div class="inner-box-small mt-5">
     
-    <header class="text-center">
-        <h1 class="logo">
-            skillsproutify
-        </h1>
-    </header>
+    <p class="primary-description">
+        Time to reset!
+    </p>
 
-    <div class="mt-5">
-
-        <p class="primary-description">
-            Time to reset!
-        </p>
-
-        <p class="primary-description" style="margin-bottom: 15rem;">
-            This confirmation link has expired.<br>
-            Let's go back to the main page<br>
-        </p>
-
-        <a href="{% url 'home' %}" style="text-decoration: none; display: block;">
-            <button class="primary-btn" type="button">
-                start over
-            </button>
-        </a>
-
-    </div>
-
+    <p class="primary-description mt-3">
+        This confirmation link has expired.<br>
+        Let's go back to the main page
+    </p>
 </div>
+
+<div class="button-footer">
+    <a href="{% url 'home' %}" style="text-decoration: none; display: block;" >
+        <button class="primary-btn" type="button">
+            start over
+        </button>
+    </a>
+</div>
+
 
 {% endblock %}

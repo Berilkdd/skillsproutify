@@ -10,6 +10,6 @@ class JobRole(models.Model):
         return self.title
     
     def clean(self):
-        # Kaydetmeden önce kontrol et
+        #Check the quantity before save
         if self.user.jobrole_set.count() >= 5 and not self.pk:
             raise ValidationError("You can only have up to 5 roles.")
