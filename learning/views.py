@@ -8,6 +8,10 @@ from .forms import JobRoleForm, ResourceForm, ResourceItemForm
 
 @login_required
 def welcome(request):
+    """
+    Renders the welcome page and handles the user's initial
+    job role submission.
+    """
     print(request.user)
     print(request.user.is_authenticated)
 
@@ -36,6 +40,9 @@ def welcome(request):
 
 @login_required
 def selected_roles(request):
+    """
+    Renders the selected roles dashboard and handles new job role creation.
+    """
     roles = JobRole.objects.filter(user=request.user)
     form = JobRoleForm()
 
@@ -58,6 +65,9 @@ def selected_roles(request):
 # when the user intentionally clears the entire list.
 @login_required
 def role_resources(request, role_id):
+    """
+    Displays sub-categories for a role and seeds default tracks if empty.
+    """
     job_role = get_object_or_404(JobRole, id=role_id, user=request.user)
     session_key = f'role_{job_role.id}_initialized'
 
@@ -89,6 +99,9 @@ def role_resources(request, role_id):
 
 @login_required
 def resource_items(request, resource_id):
+    """
+    Renders tracking line-items for a category and handles new item creation.
+    """
     resource = get_object_or_404(
         Resource, id=resource_id, job_role__user=request.user
     )
@@ -112,6 +125,10 @@ def resource_items(request, resource_id):
 
 @login_required
 def delete_item(request, item_type, item_id):
+    """
+    Handles secure database deletion for roles, resources,
+    or individual line-items.
+    """
     if item_type == 'role':
         item = get_object_or_404(JobRole, id=item_id, user=request.user)
         redirect_target = '/login-redirect/'
@@ -134,6 +151,10 @@ def delete_item(request, item_type, item_id):
 
 @login_required
 def toggle_item_status(request, item_id):
+    """
+    Cycles a tracking item's status inline between planted,
+    growing, and bloomed states.
+    """
     item = get_object_or_404(
         ResourceItem, id=item_id, resource__job_role__user=request.user
     )
