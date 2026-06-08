@@ -5,3 +5,4 @@ urlpatterns = [
     path('', views.home, name='home'), 
     path('login-redirect/', views.login_redirect, name='login_redirect'),   
 ]
+
