@@ -109,10 +109,10 @@ def delete_item(request, item_type, item_id):
         redirect_target = '/login-redirect/'  
     elif item_type == 'resource':
         item = get_object_or_404(Resource, id=item_id, job_role__user=request.user)        
-        redirect_target = f'/learning/roles/{item.job_role.id}/resources/'
+        redirect_target = f'/learning/{item.job_role.id}/'
     elif item_type == 'resource_item':
         item = get_object_or_404(ResourceItem, id=item_id, resource__job_role__user=request.user)
-        redirect_target = f'/learning/items/{item.resource.id}'
+        redirect_target = f'/learning/items/{item.resource.id}/'
    
     if request.method == "POST":
         item.delete()
