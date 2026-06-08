@@ -89,16 +89,17 @@ form {
     font-family: "jeff-script", sans-serif;
     color: var(--pink-secondary);
     font-size: 2rem !important; 
-    margin: 0;
+    margin: 0;   
     margin-left: 1rem;
 }
 
 .navbar-toggler {
     color: var(--pink-secondary);
-    border: none;
+    border: none !important;        
+    outline: none !important;       
+    box-shadow: none !important;    
     font-size: 1.8rem;
     background: transparent;
-    box-shadow: none;
 }
 
 .navbar-collapse {
@@ -107,14 +108,16 @@ form {
 
 .navbar-nav {
     display: flex;
-    margin-right: 1rem;
+    margin-right: 0.8rem;
     flex-direction: column; 
     align-items: flex-end;
-    margin-top: 0.5rem;     
+    margin-top: -0.3rem;        
 }
 
 .nav-link {
     color: var(--pink-secondary) !important;
+    padding-top: 0.1rem !important;
+    padding-bottom: 0.1rem !important;
 }
 
 /* Button */
