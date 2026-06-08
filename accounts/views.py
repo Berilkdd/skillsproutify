@@ -4,11 +4,17 @@ from learning.models import JobRole
 
 
 def home(request):
+    """
+    Renders the public home page for the users.
+    """
     return render(request, 'home.html')
 
 
 @login_required
 def login_redirect(request):
+    """
+    Redirects the user to dashboard or welcome page after login based on roles.
+    """
     if request.user.jobrole_set.exists():
         # If they already have some roles selected
         return redirect('selected_roles')

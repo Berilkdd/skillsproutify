@@ -4,6 +4,9 @@ from django.core.exceptions import ValidationError
 
 
 class JobRole(models.Model):
+    """
+    Stores a single job role entry related to :model:`auth.User`.
+    """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
 
@@ -17,6 +20,9 @@ class JobRole(models.Model):
 
 
 class Resource(models.Model):
+    """
+    Stores a single resource category related to :model:`learning.JobRole`.
+    """
     job_role = models.ForeignKey(JobRole, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
 
@@ -30,6 +36,9 @@ class Resource(models.Model):
 
 
 class ResourceItem(models.Model):
+    """
+    Stores a single item milestone entry related to :model:`learning.Resource`.
+    """
     resource = models.ForeignKey(Resource, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     status = models.CharField(max_length=15, default='planted')
