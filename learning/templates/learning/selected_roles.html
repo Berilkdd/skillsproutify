@@ -10,13 +10,13 @@
         </p>
         {% for role in roles %}
             <div class="role-item">
-                <a href="{% url 'role_resources' role.id %}" style="text-decoration: none; display: block; width: 100%;">
-                    <input
-                        type="text"
-                        class="primary-input role-input mb-3"
-                        value="{{ role.title }}"
-                        readonly
-                    >
+                <input
+                    type="text"
+                    class="primary-input role-input mb-3"
+                    value="{{ role.title }}"
+                    readonly
+    >
+                <a href="{% url 'role_resources' role.id %}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; text-decoration: none; z-index: 10;"></a>
                 </a>
 
                 <!--Button for confirmation box -->
