@@ -21,7 +21,9 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-r_g2i#2ybb_pa@a725gq*hj*ny68-3@uw0)hj7^n-istmp^vbi'
+SECRET_KEY = (
+    'django-insecure-r_g2i#2ybb_pa@a725gq*hj*ny68-3@uw0)hj7^n-istmp^vbi'
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -41,7 +43,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',       
+    'allauth.socialaccount',
 ]
 
 SITE_ID = 1
@@ -99,16 +101,28 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': (
+            'django.contrib.auth.password_validation.'
+            'UserAttributeSimilarityValidator'
+        ),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': (
+            'django.contrib.auth.password_validation.'
+            'MinimumLengthValidator'
+        ),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': (
+            'django.contrib.auth.password_validation.'
+            'CommonPasswordValidator'
+        ),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': (
+            'django.contrib.auth.password_validation.'
+            'NumericPasswordValidator'
+        ),
     },
 ]
 
@@ -141,7 +155,7 @@ STORAGES = {
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-#Email settings copied from ChatGPT for Gmail SMTP#
+# Email settings copied for Gmail SMTP
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
