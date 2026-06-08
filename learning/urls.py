@@ -7,4 +7,5 @@ urlpatterns = [
     path('<int:role_id>/', views.role_resources, name='role_resources'),
     path('items/<int:resource_id>/', views.resource_items, name='resource_items'),
     path('learning-delete/<str:item_type>/<int:item_id>/', views.delete_item, name='delete_item'), 
+    path('items/<int:item_id>/toggle/', views.toggle_item_status, name='toggle_item_status'),
 ]

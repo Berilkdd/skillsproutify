@@ -4,19 +4,25 @@
 {% block content %}
 
 <div class="inner-box-learning">
-    <div class="mt-2">
-        <p class="primary-description mb-2">
-            {{ resource.job_role.title }} Role
-        </p>
-
-        <div class="item-row">
-            <span class="primary-description item-text table-header">
-                {{ resource.name }}
-            </span>
-            <span class="primary-description status-field table-header">
-                Progress
-            </span>
-        </div>
+    <div class="mt-5">
+        <a href="{% url 'role_resources' resource.job_role.id %}" class="nav-link">
+            <p class="primary-description mb-2">
+                {{ resource.job_role.title }} 
+            </p>
+        </a>        
+        
+        {% if items %}
+            <div class="item-row">
+                <span class="primary-description item-text table-header">
+                    {{ resource.name }}
+                </span>
+                <form>
+                    <span class="primary-description status-field table-header">
+                        Progress
+                    </span>
+                </form>
+            </div>
+        {% endif %}
         
         {% for item in items %}
             <div class="item-row">
@@ -24,9 +30,13 @@
                     {{ item.name }}
                 </span>
         
-                <span class="primary-description status-field">
-                    {{ item.status }}
-                </span>
+                <form action="{% url 'toggle_item_status' item.id %}" method="POST">
+                    {% csrf_token %}
+    
+                    <button type="submit" class="primary-description status-field status-{{ item.status }}">
+                        {{ item.status }}
+                    </button>
+                </form>
 
                 <!--Button for confirmation box -->
 
@@ -66,7 +76,8 @@
         {% empty %}
             
             <p class="primary-description text-center mt-5" style="opacity: 0.5;">
-                no items left. add a new one below!
+                your progress list is empty.<br>
+                let's add something new below!
             </p>
 
         {% endfor %}

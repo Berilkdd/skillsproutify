@@ -119,6 +119,19 @@ def delete_item(request, item_type, item_id):
         
     return redirect(redirect_target)
 
+@login_required
+def toggle_item_status(request, item_id):
+    item = get_object_or_404(ResourceItem, id=item_id, resource__job_role__user=request.user)
+    
+    if item.status == 'planted':
+        item.status = 'growing'
+    elif item.status == 'growing':
+        item.status = 'bloomed'
+    else:
+        item.status = 'planted' 
+        
+    item.save()
+    return redirect('resource_items', resource_id=item.resource.id)
 
 @receiver(email_confirmed)
 def set_email_verified_session(request, email_address, **kwargs):
