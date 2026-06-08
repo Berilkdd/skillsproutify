@@ -27,9 +27,7 @@ SECRET_KEY = 'django-insecure-r_g2i#2ybb_pa@a725gq*hj*ny68-3@uw0)hj7^n-istmp^vbi
 DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.herokuapp.com']
 
-
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
