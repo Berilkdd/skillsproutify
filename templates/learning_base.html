@@ -38,7 +38,11 @@
 
                 <div class="collapse navbar-collapse" id="navbarMenu">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#">Back</a></li>
+                        {% if request.resolver_match.url_name == 'resource_items' %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'role_resources' resource.job_role.id %}">Back</a></li>
+                        {% elif request.resolver_match.url_name == 'role_resources' %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'selected_roles' %}">Back</a></li>
+                        {% endif %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Sign Out</a></li>
                     </ul>                
                 </div>

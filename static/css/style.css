@@ -204,6 +204,10 @@ navbar-toggler:hover {
     border: 0.125rem solid var(--pink-secondary);            
 }
 
+.primary-input:-webkit-autofill {
+    -webkit-text-fill-color: var(--pink-secondary) !important;
+}
+
 .role-input {
     text-align: center;
 }
