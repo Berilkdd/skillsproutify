@@ -97,19 +97,8 @@ form {
     color: var(--pink-secondary);
     border: none;
     font-size: 1.8rem;
-}
-
-navbar-toggler:hover {
-    border: none;
-    box-shadow: none;
     background: transparent;
-    color: var(--pink-primary);
-}
-
-.navbar-toggler:focus {
-    border: none;
     box-shadow: none;
-    color: var(--pink-primary);
 }
 
 .navbar-collapse {
@@ -125,7 +114,7 @@ navbar-toggler:hover {
 }
 
 .nav-link {
-    color: var(--pink-secondary);
+    color: var(--pink-secondary) !important;
 }
 
 /* Button */
