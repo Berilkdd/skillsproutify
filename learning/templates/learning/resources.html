@@ -18,17 +18,54 @@
                 >
                 <a href="{% url 'resource_items' resource.id %}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; text-decoration: none; z-index: 10;"></a>
 
-                <!--Button for confirmation box -->
+                <!--Button for modals -->
 
                 <a href="#edit-resource-{{ resource.id }}">
                     <i class="fa-solid fa-pen edit-btn"></i>
                 </a>
-                
+
                 <a href="#delete-confirm-{{ resource.id }}">
                     <i class="fa-solid fa-trash delete-btn"></i>
                 </a>
 
-                <!--Delete resource confirmation box-->
+                <!-- Edit resource modal -->
+
+                <div id="edit-resource-{{ resource.id }}" class="custom-modal-overlay">
+                    <div class="custom-modal-box">
+
+                        <p class="primary-description modal-text">
+                            Edit resource
+                        </p>
+
+                        <form action="{% url 'update_item' 'resource' resource.id %}" method="POST">
+                            {% csrf_token %}
+
+                            <input
+                                type="text"
+                                name="name"
+                                class="primary-input role-input mb-3"
+                                value="{{ resource.name }}"
+                                required
+                            >
+
+                            <div class="modal-btn-group">
+
+                                <button type="submit" class="primary-btn">
+                                    save
+                                </button>
+
+                                <a href="#" class="primary-btn modal-btn cancel-btn">
+                                    cancel
+                                </a>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+                <!--Delete resource modal-->
 
                 <div id="delete-confirm-{{ resource.id }}" class="custom-modal-overlay">
                     <div class="custom-modal-box">

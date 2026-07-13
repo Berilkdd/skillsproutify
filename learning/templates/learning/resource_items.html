@@ -38,7 +38,7 @@
                     </button>
                 </form>
 
-                <!--Button for confirmation box -->
+                <!--Button for modals -->
 
                 <a href="#edit-item-{{ item.id }}">
                     <i class="fa-solid fa-pen edit-btn"></i>
@@ -48,7 +48,44 @@
                     <i class="fa-solid fa-trash delete-btn"></i>
                 </a>
 
-                <!--Delete item confirmation box-->
+                <!-- Edit item modal -->
+
+                <div id="edit-item-{{ item.id }}" class="custom-modal-overlay">
+                    <div class="custom-modal-box">
+
+                        <p class="primary-description modal-text">
+                            Edit learning item
+                        </p>
+
+                        <form action="{% url 'update_item' 'resource_item' item.id %}" method="POST">
+                            {% csrf_token %}
+
+                            <input
+                                type="text"
+                                name="name"
+                                class="primary-input role-input mb-3"
+                                value="{{ item.name }}"
+                                required
+                            >
+
+                            <div class="modal-btn-group">
+
+                                <button type="submit" class="primary-btn">
+                                    save
+                                </button>
+
+                                <a href="#" class="primary-btn modal-btn cancel-btn">
+                                    cancel
+                                </a>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+                <!--Delete item modal-->
 
                 <div id="delete-confirm-{{ item.id }}" class="custom-modal-overlay">
                     <div class="custom-modal-box">

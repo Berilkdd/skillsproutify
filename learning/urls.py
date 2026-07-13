@@ -15,6 +15,13 @@ urlpatterns = [
         views.delete_item,
         name='delete_item'
     ),
+
+    path(
+    "update/<str:item_type>/<int:item_id>/",
+    views.update_item,
+    name="update_item",
+    ),
+
     path(
         'items/<int:item_id>/toggle/',
         views.toggle_item_status,

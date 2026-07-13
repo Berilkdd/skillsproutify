@@ -148,6 +148,39 @@ def delete_item(request, item_type, item_id):
 
     return redirect(redirect_target)
 
+@login_required
+def update_item(request, item_type, item_id):
+    """
+    Handles secure database updates for roles, resources,
+    or individual learning items.
+    """
+
+    if item_type == 'role':
+        item = get_object_or_404(JobRole, id=item_id, user=request.user)
+        form = JobRoleForm(request.POST, instance=item)
+        redirect_target = '/login-redirect/'
+
+    elif item_type == 'resource':
+        item = get_object_or_404(
+            Resource, id=item_id, job_role__user=request.user
+        )
+        form = ResourceForm(request.POST, instance=item)
+        redirect_target = f'/learning/{item.job_role.id}/'
+
+    elif item_type == 'resource_item':
+        item = get_object_or_404(
+            ResourceItem,
+            id=item_id,
+            resource__job_role__user=request.user
+        )
+        form = ResourceItemForm(request.POST, instance=item)
+        redirect_target = f'/learning/items/{item.resource.id}/'
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+
+    return redirect(redirect_target)
 
 @login_required
 def toggle_item_status(request, item_id):

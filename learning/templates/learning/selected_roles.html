@@ -18,7 +18,7 @@
     >
                 <a href="{% url 'role_resources' role.id %}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; text-decoration: none; z-index: 10;"></a>
                 
-                <!--Button for confirmation box -->
+                <!--Button for modals -->
 
                 <a href="#edit-role-{{ role.id }}">
                     <i class="fa-solid fa-pen edit-btn"></i>
@@ -28,7 +28,44 @@
                     <i class="fa-solid fa-trash delete-btn"></i>
                 </a>
 
-                <!--Delete role confirmation box-->
+                <!-- Edit role modal -->
+
+                <div id="edit-role-{{ role.id }}" class="custom-modal-overlay">
+                    <div class="custom-modal-box">
+
+                        <p class="primary-description modal-text">
+                            Edit {{ role.title }} job role
+                        </p>
+
+                        <form action="{% url 'update_item' 'role' role.id %}" method="POST">
+                            {% csrf_token %}
+
+                            <input
+                                type="text"
+                                name="title"
+                                class="primary-input role-input mb-3"
+                                value="{{ role.title }}"
+                                required
+                            >
+
+                            <div class="modal-btn-group">
+
+                                <button type="submit" class="primary-btn">
+                                    save
+                                </button>
+
+                                <a href="#" class="primary-btn modal-btn cancel-btn">
+                                    cancel
+                                </a>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+                <!--Delete role modal-->
 
                 <div id="delete-confirm-{{ role.id }}" class="custom-modal-overlay">
                     <div class="custom-modal-box">
@@ -37,9 +74,8 @@
                             Are you sure you want to delete {{ role.title }} job role?
                         </p>
 
-                        <div class="modal-btn-group">
-                            
-                            <!-- Real delete button -->
+                        <div class="modal-btn-group">                            
+                           
                             <form action="{% url 'delete_item' 'role' role.id %}" method="POST" class="modal-form">
                                 {% csrf_token %}
                                 <button type="submit" class="primary-btn">
