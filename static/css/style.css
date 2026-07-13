@@ -232,6 +232,20 @@ form {
     white-space: nowrap;
 }
 
+.edit-btn {
+    position: absolute;
+    right: calc(100% + 0.6rem);
+    top: 50%;
+    transform: translateY(-50%);
+    margin-top: -0.5rem;
+    color: var(--pink-secondary);
+    opacity: 0.4;
+    z-index: 99;
+    font-size: 1.2rem;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
 .role-item:focus-within .primary-input {
     border: 0.125rem solid var(--pink-secondary) !important;
     outline: none;
@@ -264,7 +278,7 @@ form {
 }
 
 .item-row:first-of-type .status-field {
-    padding-right: 0 !important; /* 2.5rem olan boşluğu buraya çekerek kelimeyi tam alttakilerin dikey çizgisine ittik */
+    padding-right: 0 !important; 
 }
 
 .status-planted {
@@ -294,8 +308,9 @@ form {
     flex-grow: 1; 
 }
 
+.item-row .edit-btn,
 .item-row .delete-btn {
-    margin-top: 0 !important; /* Eski input sayfasından kalan o -0.5rem'lik yukarı fırlatma baskısını bu sayfa için sıfırladık */
+    margin-top: 0 !important;
 }
 
 /*Error Messages*/
